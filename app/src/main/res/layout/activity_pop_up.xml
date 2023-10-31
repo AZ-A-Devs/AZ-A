@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopUp">
+
+    <TextView
+        android:id="@+id/TextLost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Lost!"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
+<!--
+    <ImageView
+        android:id="@+id/joke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/joke"/>
+-->
+
+    <TextView
+        android:id="@+id/TextScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_below="@id/TextLost"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/BtnAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextScore"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:text="Play Again"
+        android:textSize="25dp"
+        android:onClick="PlayAgain"
+        />
+
+    <Button
+        android:id="@+id/BtnQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BtnAgain"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:text="Quit"
+        android:textSize="25dp"
+        android:onClick="Quit"
+        />
+
+
+
+</RelativeLayout>

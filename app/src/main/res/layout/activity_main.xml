@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/TextConclusion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextCountDown"
+        android:textSize="15pt"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/TextResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find: "
+        android:textSize="15pt"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/TextEquation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2x + 3y"
+        android:textSize="15pt"
+        android:layout_below="@+id/TextResult"
+        android:layout_marginTop="20pt"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/edtA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="a = "
+        android:textSize="15pt"
+        android:layout_below="@+id/TextEquation"
+        android:layout_marginTop="30pt"
+        android:layout_marginLeft="50dp"/>
+
+    <EditText
+        android:id="@+id/edtZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="z = "
+        android:textSize="15pt"
+        android:layout_below="@+id/TextEquation"
+        android:layout_marginTop="30pt"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/BtnSubmitAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="30dp"
+        android:layout_below="@+id/TextEquation"
+        android:layout_centerHorizontal="true"
+        android:onClick="Submit"
+        android:enabled="false"
+        android:layout_marginTop="25dp"
+        />
+    
+    <TextView
+        android:id="@+id/TextCountDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text="hello"
+        android:layout_marginTop="200dp"
+        android:textSize="40dp"
+        />
+
+</RelativeLayout>
