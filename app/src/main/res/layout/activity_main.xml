@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:hint="a = "
         android:textSize="15pt"
+        android:inputType="numberSigned"
         android:layout_below="@+id/TextEquation"
         android:layout_marginTop="30pt"
         android:layout_marginLeft="50dp"/>
@@ -51,6 +52,7 @@
         android:layout_height="wrap_content"
         android:hint="z = "
         android:textSize="15pt"
+        android:inputType="numberSigned"
         android:layout_below="@+id/TextEquation"
         android:layout_marginTop="30pt"
         android:layout_alignParentRight="true"
