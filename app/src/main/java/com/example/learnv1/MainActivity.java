@@ -22,102 +22,103 @@ import android.view.inputmethod.InputMethodManager;
 //main game
 public class MainActivity extends AppCompatActivity {
 
-    int counter = 0;
+    int counter = 0; //keeps count of the score
+
+    //objects for the equations
     A a = new A("a");
     Z z = new Z("z");
     A a2 = new A("a");
     Result result = new Result();
-    private EditText edtA;
-    private EditText edtZ;
-    private Button submitValues;
+    private EditText edtA;//input for a
+    private EditText edtZ;//input for z
+    private TextView txtResult;//value to find
+    private TextView txtEquation;//equation
+    private TextView txtConclusion;//score
+    private Button submitValues;//buttonto submit answer
+
+    //timer
     TextView textCountDown;
     private static final long time_per_question = 60000;
     private CountDownTimer countDownTimer;
     private long timeLeft = time_per_question;
 
-
+/*
+This method is executed when the activity is created
+ */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+        Creating all the objects that refer to the objects that the
+        user sees
+         */
         submitValues = findViewById(R.id.BtnSubmitAns);
         textCountDown = findViewById(R.id.TextCountDown);
-        startTimer();
-
-        TextView txtResult = findViewById(R.id.TextResult);
-        TextView txtEquation = findViewById(R.id.TextEquation);
         edtA = findViewById(R.id.edtA);
         edtZ = findViewById(R.id.edtZ);
+        txtResult = findViewById(R.id.TextResult);
+        txtEquation = findViewById(R.id.TextEquation);
+        txtConclusion = findViewById(R.id.TextConclusion);
 
-        a.setValues();
-        z.setValues();
-        a2.setValues( a.getValue() );
-
-        result.setValues(a.getTotal() + z.getTotal() + a2.getTotal(),
-                a.getRep() + z.getRep() + a2.getRep());
-
-        txtResult.setText(result.getValue()+"");
-        txtEquation.setText(result.getRep());
-
-        //only activate submit button when theres num in both
-        edtA.addTextChangedListener(valuesTextWatcher);
-        edtZ.addTextChangedListener(valuesTextWatcher);
-
-        // For moving from editText to editText
-        setEditorActionListener(edtA, edtZ); // editText1 to editText2
-        setEditorActionListener(edtZ, edtA); // editText2 to editText1
+        Generate();//updating for the first time
     }
 
-    public void Generate(View view)
+    /*
+    Updates the values in case of a correct answer (switch question)
+     */
+    public void Generate()
     {
-        textCountDown = findViewById(R.id.TextCountDown);
-        resetTimer();
+        resetTimer();//start and reset the timer
 
-        TextView txtResult = findViewById(R.id.TextResult);
-        TextView txtEquation = findViewById(R.id.TextEquation);
-
+        /*
+        setting the random values
+         */
         a.setValues();
         z.setValues();
         a2.setValues( a.getValue() );
-
         result.setValues(a.getTotal() + z.getTotal() + a2.getTotal(),
                 a.getRep() + z.getRep() + a2.getRep());
 
-        txtResult.setText(result.getValue()+"");
-        txtEquation.setText(result.getRep());
+        txtResult.setText(result.getValue()+"");//showing the user the value
+        txtEquation.setText(result.getRep());//showing the user the equation
 
-        //only activate submit button when theres num in both
+        /*
+        this allows the submit button to be activated only
+        when theres numbers in each input
+         */
         edtA.addTextChangedListener(valuesTextWatcher);
         edtZ.addTextChangedListener(valuesTextWatcher);
 
-        // For moving from editText to editText
-        setEditorActionListener(edtA, edtZ); // editText1 to editText2
-        setEditorActionListener(edtZ, edtA); // editText2 to editText1
+        setEditorActionListener(edtA, edtZ); // editText1 to editText2 auto
+        setEditorActionListener(edtZ, null); // editText2
     }
 
+    /*
+    This is the method executed when the submit button is pressed
+     */
     public void Submit(View view) {
         double aGuessed = 0;
         double zGuessed = 0;
 
-        TextView txtConclusion = findViewById(R.id.TextConclusion);
-        edtA = findViewById(R.id.edtA);
-        edtZ = findViewById(R.id.edtZ);
-
+        //this is just in case, there shouldnt be any exceptions of that sort tbh
         try{
             aGuessed = Double.parseDouble(edtA.getText().toString());
             zGuessed = Double.parseDouble(edtZ.getText().toString());
 
         }catch(NumberFormatException e){
             Toast.makeText(this, "Only numbers pls", Toast.LENGTH_SHORT).show();
-            Generate(view);
+            Generate();
             return;
         }
 
+        //this validates that the answer is right
         if( result.getValue() == a.getCoeficient() * aGuessed + z.getCoeficient() * zGuessed + a2.getCoeficient() * aGuessed){
+            //if the answer is right
             counter++;
             txtConclusion.setText("Correct: " + counter);
-            Generate(view);
+            Generate();
         }else{
             lost("Incorrect!");
         }
@@ -143,17 +144,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //method called when the android back nbutton is pressed
     public void onBackPressed() {
         stopTimer();
         finish(); // Finish the activity when the back button is pressed
     }
 
+    //this method is used as validator of the input, it is called everytime an edit text
+    // is updated
     private TextWatcher valuesTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
         }
 
+        //checks that theres a num to activate the submit button
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String aField = edtA.getText().toString().trim();
@@ -162,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             submitValues.setEnabled( containsNumber(aField) && containsNumber(zField) );
         }
 
+        //gets only the number part in case there are letter or other chars in between
         @Override
         public void afterTextChanged(Editable s) {
             String text = s.toString();
@@ -173,34 +179,33 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void lost(String wayOfLosing){
+        //called when user looses, calls new activity and stops the current one
         stopTimer();
         Intent intent = new Intent(this, PopUp.class);
         intent.putExtra("score", counter+"");
         intent.putExtra("lost", wayOfLosing);
         startActivity(intent);
-        finish();
+        finish();//finishes current activity
     }
 
     private void startTimer(){
-        stopTimer();
-
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
-                updateTextCountDown();
+                updateTextCountDown();//upadtes the timer for the user to see the time
             }
 
             @Override
             public void onFinish() {
-                lost("Out of time!");
+                lost("Out of time!");//calls lost method if time ends
             }
         }.start();
     }
 
     private void resetTimer() {
-        stopTimer();
-        timeLeft = time_per_question;
+        stopTimer();//stops the time in case its running
+        timeLeft = time_per_question; //set the value to the orgininal
         updateTextCountDown();
         startTimer();
     }
@@ -218,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean containsNumber(String text) {
-        Pattern pattern = Pattern.compile(".*\\d+.*");
+        Pattern pattern = Pattern.compile(".*\\d+.*");//regex
         Matcher matcher = pattern.matcher(text);
         return matcher.matches();
     }
