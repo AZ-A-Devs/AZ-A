@@ -13,7 +13,7 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_menu);
     }
 
     public void onBackPressed() {
@@ -23,8 +23,12 @@ public class Menu extends AppCompatActivity {
     /*
     creates a new game activity if selected
      */
-    public void RunGame(View view) {
+    public void RunGame(int bound, int lower, int upper, int time) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("bound", bound);
+        intent.putExtra("lower", lower);
+        intent.putExtra("upper", upper);
+        intent.putExtra("time", time);
         startActivity(intent);
     }
 
@@ -34,5 +38,20 @@ public class Menu extends AppCompatActivity {
     public void Exit(View view) {
         System.exit(0);
         finish();
+    }
+
+    /*
+    This helps set the values depending on the difficulty :)
+     */
+    public void Easy(View view) {
+        RunGame(6, 5, 5, 30000);
+    }
+
+    public void Medium(View view) {
+        RunGame(11, 10, 10, 60000);
+    }
+
+    public void Hard(View view) {
+        RunGame(16, 20, 20, 120000);
     }
 }

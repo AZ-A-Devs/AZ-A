@@ -21,18 +21,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find: "
-        android:textSize="15pt"
+        android:textStyle="italic|bold"
+        android:textSize="25pt"
         android:layout_centerInParent="true"
         />
+
+    <TextView
+        android:id="@+id/TextResultHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextResult"
+        android:layout_centerInParent="true"
+        android:text="Solve for"
+        android:textSize="10pt" />
 
     <TextView
         android:id="@+id/TextEquation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2x + 3y"
-        android:textSize="15pt"
+        android:textSize="20pt"
+        android:textStyle="bold"
         android:layout_below="@+id/TextResult"
-        android:layout_marginTop="20pt"
+        android:layout_marginTop="25pt"
         android:layout_centerInParent="true"/>
 
     <EditText

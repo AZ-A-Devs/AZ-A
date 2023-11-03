@@ -1,3 +1,8 @@
+/*issues:
+-Not solved: time should be handled as long, but i had to cast it to int and handle it that way
+    cuz i had problems when sending the longs, so i casted them to ints, here and in PopUp
+ */
+
 package com.example.learnv1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     int counter = 0; //keeps count of the score
 
+    //values depending on the difficulty
+    private int bound, lower, upper;
+
     //objects for the equations
     A a = new A("a");
     Z z = new Z("z");
@@ -38,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     //timer
     TextView textCountDown;
-    private static final long time_per_question = 60000;
+    private static int time_per_question;
     private CountDownTimer countDownTimer;
-    private long timeLeft = time_per_question;
+    private int timeLeft;
 
 /*
 This method is executed when the activity is created
@@ -49,6 +57,12 @@ This method is executed when the activity is created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setting the values depending on the difficulty
+        bound = getIntent().getIntExtra("bound", 10);
+        lower = getIntent().getIntExtra("lower", 10);
+        upper = getIntent().getIntExtra("upper", 10);
+        time_per_question = getIntent().getIntExtra("time", 60000);
+        timeLeft = time_per_question;
 
         /*
         Creating all the objects that refer to the objects that the
@@ -75,13 +89,13 @@ This method is executed when the activity is created
         /*
         setting the random values
          */
-        a.setValues();
-        z.setValues();
-        a2.setValues( a.getValue() );
+        a.setValues( bound, lower, upper );
+        z.setValues( bound, lower, upper );
+        a2.setValues2( a.getValue(), lower, upper );
         result.setValues(a.getTotal() + z.getTotal() + a2.getTotal(),
                 a.getRep() + z.getRep() + a2.getRep());
 
-        txtResult.setText(result.getValue()+"");//showing the user the value
+        txtResult.setText(result.getValue() + "");//showing the user the value
         txtEquation.setText(result.getRep());//showing the user the equation
 
         /*
@@ -184,6 +198,10 @@ This method is executed when the activity is created
         Intent intent = new Intent(this, PopUp.class);
         intent.putExtra("score", counter+"");
         intent.putExtra("lost", wayOfLosing);
+        intent.putExtra("time", time_per_question);
+        intent.putExtra("bound", bound);
+        intent.putExtra("lower", lower);
+        intent.putExtra("upper", upper);
         startActivity(intent);
         finish();//finishes current activity
     }
@@ -192,7 +210,7 @@ This method is executed when the activity is created
         countDownTimer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timeLeft = millisUntilFinished;
+                timeLeft = (int) millisUntilFinished;
                 updateTextCountDown();//upadtes the timer for the user to see the time
             }
 

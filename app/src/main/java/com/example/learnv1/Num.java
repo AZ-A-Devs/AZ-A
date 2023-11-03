@@ -12,26 +12,28 @@ public class Num
         this.var = var;
     }
 
-    public void setValues(){
-        setValue();
-        setCoeficient();
+    public void setValues(int bound ,int lower, int upper){
+        setValue(bound);
+        setCoeficient(lower, upper);
         setTotal();
         setRep();
     }
-    public void setValues(int value){
-        setValue(value);
-        setCoeficient();
+    public void setValues2(int value, int lower, int upper){
+        setValue2(value);
+        setCoeficient(lower, upper);
         setTotal();
         setRep();
     }
 
-    private void setValue() {
-        this.value = random.nextInt(11);
+    private void setValue(int bound) {
+        this.value = random.nextInt(bound);
     }
-    private void setValue(int value) { this.value = value; }
+    private void setValue2(int value) {
+        this.value = value;
+    }
 
-    private void setCoeficient() {
-        this.coeficient = random.nextInt(21) - 10;
+    private void setCoeficient(int lower, int upper) {
+        this.coeficient = random.nextInt(upper + lower + 1) - lower;
     }
 
     public int getCoeficient() { return coeficient; }
