@@ -23,6 +23,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.text.InputFilter;
 
 //main game
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     //values depending on the difficulty
     private int bound, lower, upper;
+    private final int maxLength = 4;
+    InputFilter[] filters;
 
     //objects for the equations
     A a = new A("a");
@@ -63,6 +66,7 @@ This method is executed when the activity is created
         upper = getIntent().getIntExtra("upper", 10);
         time_per_question = getIntent().getIntExtra("time", 60000);
         timeLeft = time_per_question;
+
 
         /*
         Creating all the objects that refer to the objects that the
@@ -131,7 +135,7 @@ This method is executed when the activity is created
         if( result.getValue() == a.getCoeficient() * aGuessed + z.getCoeficient() * zGuessed + a2.getCoeficient() * aGuessed){
             //if the answer is right
             counter++;
-            txtConclusion.setText("Correct: " + counter);
+            txtConclusion.setText("Current score: " + counter);
             Generate();
         }else{
             lost("Incorrect!");
@@ -181,10 +185,16 @@ This method is executed when the activity is created
             submitValues.setEnabled( containsNumber(aField) && containsNumber(zField) );
         }
 
-        //gets only the number part in case there are letter or other chars in between
+        //gets only the number part in case there are letter or other chars in between s.replace(0, s.length(), String.valueOf(maxLength));
         @Override
         public void afterTextChanged(Editable s) {
             String text = s.toString();
+            if (!text.isEmpty()) {
+                int enteredLength = text.length();
+                if (enteredLength > maxLength) {
+                    s.delete(enteredLength - 1, enteredLength);
+                }
+            }
             if (!text.isEmpty() && !text.matches("-?\\d*")) {
                 // If the text is not a valid number, remove non-numeric characters
                 s.replace(0, s.length(), text.replaceAll("[^\\d-]", ""));

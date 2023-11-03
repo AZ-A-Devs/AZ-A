@@ -7,13 +7,24 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/TextHighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8pt"
+        android:layout_marginTop="15pt"
+        android:layout_marginStart="10pt"
+        android:text="High Score: "
+        />
+
+    <TextView
         android:id="@+id/TextConclusion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TextCountDown"
-        android:textSize="15pt"
-        android:layout_margin="10dp"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/TextHighScore"
+        android:textSize="8pt"
+        android:layout_marginStart="10pt"
+        android:layout_marginTop="5pt"
+        android:text="Current Score:"
         />
 
     <TextView
@@ -32,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/TextResult"
         android:layout_centerInParent="true"
-        android:text="Solve for"
+        android:text="Solve for: "
         android:textSize="10pt" />
 
     <TextView
@@ -46,6 +57,15 @@
         android:layout_marginTop="25pt"
         android:layout_centerInParent="true"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/edtA"
+        android:textSize="20dp"
+        android:text="Find a"
+        android:layout_marginBottom="-65dp"
+        android:layout_marginLeft="55dp"/>
+
     <EditText
         android:id="@+id/edtA"
         android:layout_width="wrap_content"
@@ -55,7 +75,18 @@
         android:inputType="numberSigned"
         android:layout_below="@+id/TextEquation"
         android:layout_marginTop="30pt"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/edtA"
+        android:textSize="20dp"
+        android:text="Find z"
+        android:layout_marginBottom="-65dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="55dp"/>
 
     <EditText
         android:id="@+id/edtZ"
