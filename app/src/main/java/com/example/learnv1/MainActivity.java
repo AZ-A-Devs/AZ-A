@@ -8,6 +8,7 @@ package com.example.learnv1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     //values depending on the difficulty
     private int bound, lower, upper;
     private final int maxLength = 4;
-    InputFilter[] filters;
 
     //objects for the equations
     A a = new A("a");
@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
     private static int time_per_question;
     private CountDownTimer countDownTimer;
     private int timeLeft;
+
+    //to preserve counter
+    private TextView textHighScore;
+    public static final String SHARED_PREFS = "shared preferences";
+    private int h_score;
 
 /*
 This method is executed when the activity is created
@@ -79,6 +84,7 @@ This method is executed when the activity is created
         txtResult = findViewById(R.id.TextResult);
         txtEquation = findViewById(R.id.TextEquation);
         txtConclusion = findViewById(R.id.TextConclusion);
+        textHighScore = findViewById(R.id.TextHighScore);
 
         Generate();//updating for the first time
     }
@@ -88,6 +94,7 @@ This method is executed when the activity is created
      */
     public void Generate()
     {
+        loadData();//loads the high score
         resetTimer();//start and reset the timer
 
         /*
@@ -136,6 +143,10 @@ This method is executed when the activity is created
             //if the answer is right
             counter++;
             txtConclusion.setText("Current score: " + counter);
+            //update high score
+            if(counter > h_score){
+                saveData();
+            }
             Generate();
         }else{
             lost("Incorrect!");
@@ -185,7 +196,8 @@ This method is executed when the activity is created
             submitValues.setEnabled( containsNumber(aField) && containsNumber(zField) );
         }
 
-        //gets only the number part in case there are letter or other chars in between s.replace(0, s.length(), String.valueOf(maxLength));
+        //gets only the number part in case there are letter or other chars in between
+        // and it alsa limits the input
         @Override
         public void afterTextChanged(Editable s) {
             String text = s.toString();
@@ -248,6 +260,39 @@ This method is executed when the activity is created
         int seconds = (int) timeLeft / 1000;
         String timeLeftFormatted = "Time Left: "+ seconds;
         textCountDown.setText(timeLeftFormatted);
+    }
+
+    /*
+    used to preserve data, high score in this case
+     */
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(bound == 6){
+            editor.putInt("Easy", counter);
+        }else if(bound == 11){
+            editor.putInt("Medium", counter);
+        }else{
+            editor.putInt("Hard", counter);
+        }
+        editor.apply();//must do
+    }
+
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        if(bound == 6){
+            h_score = sharedPreferences.getInt("Easy", 0);
+        }else if(bound == 11){
+            h_score = sharedPreferences.getInt("Medium", 0);
+        }else{
+            h_score = sharedPreferences.getInt("Hard", 0);
+        }
+        updateHighScore();
+    }
+
+    public void updateHighScore(){
+        textHighScore.setText("High Score: " + h_score);
     }
 
     private boolean containsNumber(String text) {
