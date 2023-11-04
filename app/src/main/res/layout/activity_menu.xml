@@ -27,47 +27,33 @@
         android:layout_marginTop="50dp"
         />
 
-    <Button
-        android:id="@+id/BtnEasy"
+
+
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_below="@id/TextPlay"
-        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
-        android:text="Easy"
-        android:textSize="25dp"
-        android:onClick="Easy"
-        />
+        android:layout_marginTop="20dp" />
 
     <Button
-        android:id="@+id/BtnMedium"
+        android:id="@+id/BtnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BtnEasy"
-        android:layout_marginTop="15dp"
+        android:layout_below="@id/spinner"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:text="Medium"
+        android:text="Play"
         android:textSize="25dp"
-        android:onClick="Medium"
-        />
-
-    <Button
-        android:id="@+id/BtnHard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/BtnMedium"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:text="Hard"
-        android:textSize="25dp"
-        android:onClick="Hard"
+        android:onClick="Exit"
         />
 
     <Button
         android:id="@+id/BtnExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BtnHard"
+        android:layout_below="@id/BtnPlay"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
         android:text="Exit"

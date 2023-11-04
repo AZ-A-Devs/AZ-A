@@ -5,15 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 /*
 first activity, its the menu
  */
 public class Menu extends AppCompatActivity {
+    private Spinner spinner1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        //Create an Array
+        spinner1 = (Spinner)findViewById(R.id.spinner);
+        String [] options = {"Easy", "Medium", "Hard"};
+
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
+        spinner1.setAdapter(adapter);
+
     }
 
     public void onBackPressed() {
@@ -32,6 +44,17 @@ public class Menu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Play(View view){
+        String selection = spinner1.getSelectedItem().toString();
+        if(selection.equals("Easy")){
+            Easy();
+        } else if (selection.equals("Medium")) {
+            Medium();
+        } else if (selection.equals("Hard")) {
+            Hard();
+        }
+    }
+
     /*
     exits the game if selected
      */
@@ -43,15 +66,15 @@ public class Menu extends AppCompatActivity {
     /*
     This helps set the values depending on the difficulty :)
      */
-    public void Easy(View view) {
+    public void Easy() {
         RunGame(6, 5, 5, 30000);
     }
 
-    public void Medium(View view) {
+    public void Medium () {
         RunGame(11, 10, 10, 60000);
     }
 
-    public void Hard(View view) {
+    public void Hard() {
         RunGame(16, 20, 20, 120000);
     }
 }

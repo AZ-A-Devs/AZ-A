@@ -16,6 +16,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.regex.Pattern;
@@ -65,6 +66,7 @@ This method is executed when the activity is created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //setting the values depending on the difficulty
         bound = getIntent().getIntExtra("bound", 10);
         lower = getIntent().getIntExtra("lower", 10);
