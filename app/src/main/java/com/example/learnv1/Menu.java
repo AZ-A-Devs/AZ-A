@@ -25,7 +25,6 @@ public class Menu extends AppCompatActivity {
 
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         spinner1.setAdapter(adapter);
-
     }
 
     public void onBackPressed() {

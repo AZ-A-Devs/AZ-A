@@ -46,7 +46,7 @@
         android:layout_centerHorizontal="true"
         android:text="Play"
         android:textSize="25dp"
-        android:onClick="Exit"
+        android:onClick="Play"
         />
 
     <Button
