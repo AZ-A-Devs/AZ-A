@@ -3,16 +3,19 @@ package com.example.learnv1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /*
 first activity, its the menu
  */
 public class Menu extends AppCompatActivity {
     private Spinner spinner1;
+    private TextView txtHighScore;//temporal
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,17 @@ public class Menu extends AppCompatActivity {
 
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         spinner1.setAdapter(adapter);
+
+        /*
+        this is a demo, it only shows the high score registered in easy mode,
+        can you make the distinction between the difficulties and make it look better?,
+        also  you can use methods instead of putting everything here and declaring attributes for the class, to make
+        the code nicer :). But wtry it, it works like this.
+         */
+        txtHighScore = findViewById(R.id.TextHighScore);
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        int h_score = sharedPreferences.getInt("Easy", 0);
+        txtHighScore.setText("High Score: "+h_score);
     }
 
     public void onBackPressed() {
