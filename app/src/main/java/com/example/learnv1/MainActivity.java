@@ -297,6 +297,8 @@ This method is executed when the activity is created
         textHighScore.setText("High Score: " + h_score);
     }
 
+
+
     private boolean containsNumber(String text) {
         Pattern pattern = Pattern.compile(".*\\d+.*");//regex
         Matcher matcher = pattern.matcher(text);

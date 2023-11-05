@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,23 +23,44 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        //Create an Array
+        //Creates an array to select the difficulty with the spinner
         spinner1 = (Spinner)findViewById(R.id.spinner);
         String [] options = {"Easy", "Medium", "Hard"};
+
+        txtHighScore = findViewById(R.id.TextHighScore);
 
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
         spinner1.setAdapter(adapter);
 
         /*
-        this is a demo, it only shows the high score registered in easy mode,
-        can you make the distinction between the difficulties and make it look better?,
-        also  you can use methods instead of putting everything here and declaring attributes for the class, to make
-        the code nicer :). But wtry it, it works like this.
+        This shows the highest Score for the difficulty selected in the Menu
          */
-        txtHighScore = findViewById(R.id.TextHighScore);
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        int h_score = sharedPreferences.getInt("Easy", 0);
-        txtHighScore.setText("High Score: "+h_score);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selection = spinner1.getSelectedItem().toString();
+
+                if(selection.equals("Easy")){
+                    SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+                    int h_score = sharedPreferences.getInt("Easy", 0);
+                    txtHighScore.setText("High Score: "+h_score);
+                } else if (selection.equals("Medium")) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+                    int h_score = sharedPreferences.getInt("Medium", 0);
+                    txtHighScore.setText("High Score: "+h_score);
+                } else if (selection.equals("Hard")) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+                    int h_score = sharedPreferences.getInt("Hard", 0);
+                    txtHighScore.setText("High Score: "+h_score);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     public void onBackPressed() {
@@ -67,6 +89,7 @@ public class Menu extends AppCompatActivity {
             Hard();
         }
     }
+
 
     /*
     exits the game if selected
