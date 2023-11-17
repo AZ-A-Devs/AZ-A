@@ -4,38 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/Prueba1"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/TextHighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8pt"
-        android:layout_marginTop="15pt"
         android:layout_marginStart="10pt"
+        android:layout_marginTop="15pt"
         android:text="High Score: "
-        />
+        android:textColor="#DCD9C9"
+        android:textSize="8pt" />
 
     <TextView
         android:id="@+id/TextConclusion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TextHighScore"
-        android:textSize="8pt"
         android:layout_marginStart="10pt"
         android:layout_marginTop="5pt"
         android:text="Current Score:"
-        />
+        android:textColor="#DCD9C9"
+        android:textSize="8pt" />
 
     <TextView
         android:id="@+id/TextResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find: "
-        android:textStyle="italic|bold"
-        android:textSize="25pt"
         android:layout_centerInParent="true"
-        />
+        android:text="Find: "
+        android:textColor="#DCD9C9"
+        android:textSize="25pt"
+        android:textStyle="italic|bold" />
 
     <TextView
         android:id="@+id/TextResultHint"
@@ -44,83 +45,89 @@
         android:layout_above="@+id/TextResult"
         android:layout_centerInParent="true"
         android:text="Solve for: "
+        android:textColor="#DCD9C9"
         android:textSize="10pt" />
 
     <TextView
         android:id="@+id/TextEquation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2x + 3y"
-        android:textSize="20pt"
-        android:textStyle="bold"
         android:layout_below="@+id/TextResult"
+        android:layout_centerInParent="true"
         android:layout_marginTop="25pt"
-        android:layout_centerInParent="true"/>
+        android:text="2x + 3y"
+        android:textColor="#DCD9C9"
+        android:textSize="20pt"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/edtA"
-        android:textSize="20dp"
-        android:text="Find a"
+        android:layout_marginLeft="55dp"
         android:layout_marginBottom="-65dp"
-        android:layout_marginLeft="55dp"/>
+        android:text="Find a"
+        android:textColor="#DCD9C9"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/edtA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="a = "
-        android:textSize="15pt"
-        android:inputType="numberSigned"
         android:layout_below="@+id/TextEquation"
-        android:layout_marginTop="30pt"
         android:layout_marginLeft="50dp"
-        />
+        android:layout_marginTop="30pt"
+        android:hint="a = "
+        android:inputType="numberSigned"
+        android:textColor="#DCD9C9"
+        android:textSize="15pt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/edtA"
-        android:textSize="20dp"
-        android:text="Find z"
-        android:layout_marginBottom="-65dp"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="55dp"/>
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="-65dp"
+        android:text="Find z"
+        android:textColor="#DCD9C9"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/edtZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="z = "
-        android:textSize="15pt"
-        android:inputType="numberSigned"
         android:layout_below="@+id/TextEquation"
-        android:layout_marginTop="30pt"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"/>
+        android:layout_marginTop="30pt"
+        android:layout_marginRight="50dp"
+        android:hint="z = "
+        android:inputType="numberSigned"
+        android:textColor="#DCD9C9"
+        android:textSize="15pt" />
 
     <Button
         android:id="@+id/BtnSubmitAns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:textSize="30dp"
         android:layout_below="@+id/TextEquation"
         android:layout_centerHorizontal="true"
-        android:onClick="Submit"
-        android:enabled="false"
         android:layout_marginTop="25dp"
-        />
-    
+        android:enabled="false"
+        android:onClick="Submit"
+        android:text="Submit"
+        android:textColor="#DCD9C9"
+        android:textSize="30dp"
+        app:rippleColor="#DCD9C9" />
+
     <TextView
         android:id="@+id/TextCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:text="hello"
         android:layout_marginTop="200dp"
-        android:textSize="40dp"
-        />
+        android:text="hello"
+        android:textColor="#DCD9C9"
+        android:textSize="40dp" />
 
 </RelativeLayout>
