@@ -226,6 +226,7 @@ This method is executed when the activity is created
         intent.putExtra("bound", bound);
         intent.putExtra("lower", lower);
         intent.putExtra("upper", upper);
+        intent.putExtra("answer", result.getRep()+"\na = "+a.getValue()+"   z = "+z.getValue());
         startActivity(intent);
         finish();//finishes current activity
     }

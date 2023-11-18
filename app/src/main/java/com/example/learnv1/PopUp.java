@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class PopUp extends AppCompatActivity {
     private int bound, lower, upper;
+    String answer;
     private int time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,12 @@ public class PopUp extends AppCompatActivity {
         bound = getIntent().getIntExtra("bound", 11);
         lower = getIntent().getIntExtra("lower", 10);
         upper = getIntent().getIntExtra("upper", 10);
+        answer = getIntent().getStringExtra("answer");
 
         TextView  txtScore = findViewById(R.id.TextScore);
+        TextView txtAns = findViewById(R.id.TextAns);
         txtScore.setText(lost + "\nYour score was: " + score);
+        txtAns.setText("Answer was:\n"+answer);
     }
 
     public void onBackPressed() {

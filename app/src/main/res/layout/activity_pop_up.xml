@@ -33,12 +33,23 @@
         android:layout_marginTop="25dp"
         />
 
+    <TextView
+        android:id="@+id/TextAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_below="@id/TextScore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+
     <Button
         android:id="@+id/BtnAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TextScore"
-        android:layout_marginTop="25dp"
+        android:layout_below="@id/TextAns"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
         android:text="Play Again"
         android:textSize="25dp"
