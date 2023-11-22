@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/lose_bground"
     tools:context=".PopUp">
 
     <TextView
         android:id="@+id/TextLost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You Lost!"
-        android:textSize="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        />
+        android:text="You Lost!"
+        android:textColor="#FAF9F9"
+        android:textSize="50dp" />
 <!--
     <ImageView
         android:id="@+id/joke"
@@ -49,24 +50,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TextAns"
-        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:text="Play Again"
-        android:textSize="25dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#BD275A"
         android:onClick="PlayAgain"
-        />
+        android:text="Play Again"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/BtnQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/BtnAgain"
-        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
-        android:text="Quit"
-        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#BD275A"
         android:onClick="Quit"
-        />
+        android:text="Quit"
+        android:textSize="25dp" />
 
 
 

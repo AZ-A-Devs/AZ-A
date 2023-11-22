@@ -2,7 +2,7 @@
 -Not solved: time should be handled as long, but i had to cast it to int and handle it that way
     cuz i had problems when sending the longs, so i casted them to ints, here and in PopUp
  */
-
+//goooooooool
 package com.example.learnv1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +31,7 @@ import android.text.InputFilter;
 public class MainActivity extends AppCompatActivity {
 
     int counter = 0; //keeps count of the score
+    int test = 0;
 
     //values depending on the difficulty
     private int bound, lower, upper;

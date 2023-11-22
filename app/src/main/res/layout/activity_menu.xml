@@ -4,28 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/base_bground"
     tools:context=".Menu">
 
     <TextView
         android:id="@+id/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AZ-A"
-        android:textSize="75dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        />
+        android:text="AZ-A"
+        android:textColor="#FAF9F9"
+        android:textSize="75dp" />
 
     <TextView
         android:id="@+id/TextPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play -> Select Difficulty: "
-        android:textSize="25dp"
         android:layout_below="@id/TextTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        />
+        android:text="Play -> Select Difficulty: "
+        android:textColor="#FAF9F9"
+        android:textSize="25dp" />
 
 
 
@@ -65,11 +66,11 @@
         android:id="@+id/TextHighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High score"
-        android:textSize="25dp"
         android:layout_below="@id/BtnExit"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        />
+        android:text="High score"
+        android:textColor="#FAF9F9"
+        android:textSize="25dp" />
 
 </RelativeLayout>
