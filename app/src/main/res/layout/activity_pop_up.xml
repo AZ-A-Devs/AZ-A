@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lose_bground"
-    tools:context=".PopUp">
+    tools:context=".PopUp"
+    android:screenOrientation="portrait">
 
     <TextView
         android:id="@+id/TextLost"
@@ -38,10 +39,15 @@
         android:id="@+id/TextAns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_below="@id/TextScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:background="#C5A6B8"
+        android:text="2"
+        android:padding="5dp"
         />
 
 

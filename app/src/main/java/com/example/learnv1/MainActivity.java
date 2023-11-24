@@ -27,6 +27,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.text.InputFilter;
+import android.content.pm.ActivityInfo;
 
 //main game
 public class MainActivity extends AppCompatActivity {
@@ -70,6 +71,8 @@ This method is executed when the activity is created
         setContentView(R.layout.activity_main);
 
         //locks screen rotation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //setting the values depending on the difficulty
@@ -303,7 +306,9 @@ This method is executed when the activity is created
         textHighScore.setText("High Score: " + h_score);
     }
 
-
+    public void notUpdateHighScore() {
+        System.out.println("hey how you doinn");
+    }
 
     private boolean containsNumber(String text) {
         Pattern pattern = Pattern.compile(".*\\d+.*");//regex

@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.content.pm.ActivityInfo;
 
 /*
 first activity, its the menu
@@ -27,6 +28,8 @@ public class Menu extends AppCompatActivity {
         //locks screen rotation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Creates an array to select the difficulty with the spinner
         spinner1 = (Spinner)findViewById(R.id.spinner);
