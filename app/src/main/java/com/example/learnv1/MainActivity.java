@@ -141,6 +141,8 @@ This method is executed when the activity is created
         try{
             aGuessed = Double.parseDouble(edtA.getText().toString());
             zGuessed = Double.parseDouble(edtZ.getText().toString());
+            edtA.setText("");
+            edtZ.setText("");
 
         }catch(NumberFormatException e){
             Toast.makeText(this, "Only numbers pls", Toast.LENGTH_SHORT).show();
