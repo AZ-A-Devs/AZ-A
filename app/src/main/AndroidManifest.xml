@@ -15,9 +15,14 @@
 
         <!--hey-->
         <activity
+            android:screenOrientation="portrait"
+            android:resizeableActivity="false"
             android:name=".PopUp"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
+            android:screenOrientation="portrait"
+            android:resizeableActivity="false"
             android:name=".Menu"
             android:exported="true">
             <intent-filter>
@@ -27,6 +32,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:resizeableActivity="false"
             android:name=".MainActivity"
             android:exported="false" />
     </application>

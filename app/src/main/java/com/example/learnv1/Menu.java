@@ -37,7 +37,8 @@ public class Menu extends AppCompatActivity {
 
         txtHighScore = findViewById(R.id.TextHighScore);
 
-        ArrayAdapter <String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(this,R.layout.spinner_items, options);
+        adapter.setDropDownViewResource(R.layout.my_dropdown_item);
         spinner1.setAdapter(adapter);
 
         /*
