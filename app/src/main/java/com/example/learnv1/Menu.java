@@ -19,11 +19,14 @@ first activity, its the menu
 public class Menu extends AppCompatActivity {
     private Spinner spinner1;
     private TextView txtHighScore;//temporal
+    private TextView textPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        textPlay = findViewById(R.id.TextPlay)
+        textPlay.setText(R.string.play_select_difficulty);
 
         //locks screen rotation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -31,9 +34,11 @@ public class Menu extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        
+
         //Creates an array to select the difficulty with the spinner
         spinner1 = (Spinner)findViewById(R.id.spinner);
-        String [] options = {"Easy", "Medium", "Hard"};
+        String [] options = {getString(R.string.mode_easy), getString(R.string.mode_medium), getString(R.string.mode_hard)};
 
         txtHighScore = findViewById(R.id.TextHighScore);
 
@@ -49,18 +54,18 @@ public class Menu extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = spinner1.getSelectedItem().toString();
 
-                if(selection.equals("Easy")){
+                if(selection.equals(getString(R.string.mode_easy))){
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
                     int h_score = sharedPreferences.getInt("Easy", 0);
-                    txtHighScore.setText("High Score: "+h_score);
-                } else if (selection.equals("Medium")) {
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
+                } else if (selection.equals(getString(R.string.mode_medium))) {
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
                     int h_score = sharedPreferences.getInt("Medium", 0);
-                    txtHighScore.setText("High Score: "+h_score);
-                } else if (selection.equals("Hard")) {
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
+                } else if (selection.equals(getString(R.string.mode_hard))) {
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
                     int h_score = sharedPreferences.getInt("Hard", 0);
-                    txtHighScore.setText("High Score: "+h_score);
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
                 }
             }
 
@@ -90,11 +95,11 @@ public class Menu extends AppCompatActivity {
 
     public void Play(View view){
         String selection = spinner1.getSelectedItem().toString();
-        if(selection.equals("Easy")){
+        if(selection.equals(getString(R.string.mode_easy))){
             Easy();
-        } else if (selection.equals("Medium")) {
+        } else if (selection.equals(getString(R.string.mode_medium))) {
             Medium();
-        } else if (selection.equals("Hard")) {
+        } else if (selection.equals(getString(R.string.mode_hard))) {
             Hard();
         }
     }
