@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10pt"
         android:layout_marginTop="15pt"
-        android:text="High Score: "
         android:textColor="#DCD9C9"
         android:textSize="8pt" />
 
@@ -25,7 +24,6 @@
         android:layout_below="@id/TextHighScore"
         android:layout_marginStart="10pt"
         android:layout_marginTop="5pt"
-        android:text="Current Score:"
         android:textColor="#DCD9C9"
         android:textSize="8pt" />
 
@@ -45,7 +43,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/TextResult"
         android:layout_centerInParent="true"
-        android:text="Solve for: "
         android:textColor="#DCD9C9"
         android:textSize="10pt" />
 
@@ -62,6 +59,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/edt2A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/edtA"
@@ -84,6 +82,7 @@
         android:textSize="15pt" />
 
     <TextView
+        android:id="@+id/edt2Z"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/edtA"

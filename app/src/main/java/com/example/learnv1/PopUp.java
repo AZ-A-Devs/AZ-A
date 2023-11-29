@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +14,23 @@ public class PopUp extends AppCompatActivity {
     private int bound, lower, upper;
     String answer;
     private int time;
+    private TextView txtLost;
+    private Button btnPlayAgain;
+    private Button btnQuit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up);
+
+        txtLost = findViewById(R.id.TextLost);
+        txtLost.setText(getString(R.string.you_lost));
+        btnPlayAgain = findViewById(R.id.BtnAgain);
+        btnPlayAgain.setText(getString(R.string.play_again));
+        btnQuit = findViewById(R.id.BtnQuit);
+        btnQuit.setText(getString(R.string.quit));
+
+
 
         //locks screen rotation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -32,8 +46,8 @@ public class PopUp extends AppCompatActivity {
 
         TextView  txtScore = findViewById(R.id.TextScore);
         TextView txtAns = findViewById(R.id.TextAns);
-        txtScore.setText(lost + "\nYour score was: " + score);
-        txtAns.setText("Answer was:\n"+answer);
+        txtScore.setText(lost + getString(R.string.your_score_was) + score);
+        txtAns.setText(getString(R.string.answer_was)+answer);
     }
 
     public void onBackPressed() {

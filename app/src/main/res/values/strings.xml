@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">AZ-A</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="select_difficulty">Select Difficulty to Play</string>
+    <string name="play">Play</string>
+    <string name="exit">Exit</string>
+    <string name="high_score">"High Score: "</string>
+    <string name="current_score">"Current score: "</string>
+    <string name="incorrect">Incorrect!\n</string>
+    <string name="out_of_time">Out of time!\n</string>
+    <string name="time_left">"Time Left: "</string>
+    <string name="solve_for">Solve For:</string>
+    <string name="find_a">Find a</string>
+    <string name="find_z">Find z</string>
+    <string name="submit">Submit</string>
+    <string name="your_score_was">"\nYour score was: "</string>
+    <string name="answer_was">Answer was:\n</string>
+    <string name="you_lost">You Lost</string>
+    <string name="play_again">Play Again</string>
+    <string name="quit">Quit</string>
 </resources>

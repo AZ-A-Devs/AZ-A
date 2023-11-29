@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtResult;//value to find
     private TextView txtEquation;//equation
     private TextView txtConclusion;//score
+    private TextView txtSolveFor;
+    private TextView txtFindA;
+    private TextView txtFindZ;
     private Button submitValues;//buttonto submit answer
 
     //timer
@@ -70,6 +73,13 @@ This method is executed when the activity is created
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txtSolveFor = findViewById(R.id.TextResultHint);
+        txtSolveFor.setText(getString(R.string.solve_for));
+        txtFindA = findViewById(R.id.edt2A);
+        txtFindZ = findViewById(R.id.edt2Z);
+        txtFindA.setText(getString(R.string.find_a));
+        txtFindZ.setText(getString(R.string.find_z));
+
         //locks screen rotation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -88,6 +98,7 @@ This method is executed when the activity is created
         user sees
          */
         submitValues = findViewById(R.id.BtnSubmitAns);
+        submitValues.setText(getString(R.string.submit));
         textCountDown = findViewById(R.id.TextCountDown);
         edtA = findViewById(R.id.edtA);
         edtZ = findViewById(R.id.edtZ);
@@ -154,14 +165,14 @@ This method is executed when the activity is created
         if( result.getValue() == a.getCoeficient() * aGuessed + z.getCoeficient() * zGuessed + a2.getCoeficient() * aGuessed){
             //if the answer is right
             counter++;
-            txtConclusion.setText("Current score: " + counter);
+            txtConclusion.setText(getString(R.string.current_score) + counter);
             //update high score
             if(counter > h_score){
                 saveData();
             }
             Generate();
         }else{
-            lost("Incorrect!");
+            lost(getString(R.string.incorrect));
         }
     }
 
@@ -251,7 +262,7 @@ This method is executed when the activity is created
 
             @Override
             public void onFinish() {
-                lost("Out of time!");//calls lost method if time ends
+                lost(getString(R.string.out_of_time));//calls lost method if time ends
             }
         }.start();
     }
@@ -271,7 +282,7 @@ This method is executed when the activity is created
 
     private void updateTextCountDown() {
         int seconds = (int) timeLeft / 1000;
-        String timeLeftFormatted = "Time Left: "+ seconds;
+        String timeLeftFormatted = getString(R.string.time_left)+ seconds;
         textCountDown.setText(timeLeftFormatted);
     }
 
@@ -283,11 +294,11 @@ This method is executed when the activity is created
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         if(bound == 6){
-            editor.putInt("Easy", counter);
+            editor.putInt(getString(R.string.easy), counter);
         }else if(bound == 11){
-            editor.putInt("Medium", counter);
+            editor.putInt(getString(R.string.medium), counter);
         }else{
-            editor.putInt("Hard", counter);
+            editor.putInt(getString(R.string.hard), counter);
         }
         editor.apply();//must do
     }
@@ -295,17 +306,17 @@ This method is executed when the activity is created
     public void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         if(bound == 6){
-            h_score = sharedPreferences.getInt("Easy", 0);
+            h_score = sharedPreferences.getInt(getString(R.string.easy), 0);
         }else if(bound == 11){
-            h_score = sharedPreferences.getInt("Medium", 0);
+            h_score = sharedPreferences.getInt(getString(R.string.medium), 0);
         }else{
-            h_score = sharedPreferences.getInt("Hard", 0);
+            h_score = sharedPreferences.getInt(getString(R.string.hard), 0);
         }
         updateHighScore();
     }
 
     public void updateHighScore(){
-        textHighScore.setText("High Score: " + h_score);
+        textHighScore.setText(getString(R.string.high_score) + h_score);
     }
 
     public void notUpdateHighScore() {

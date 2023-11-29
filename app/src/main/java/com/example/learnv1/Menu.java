@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.pm.ActivityInfo;
@@ -19,6 +20,10 @@ first activity, its the menu
 public class Menu extends AppCompatActivity {
     private Spinner spinner1;
     private TextView txtHighScore;//temporal
+    private Button btnPlay;
+    private Button btnExit;
+
+    private TextView txtPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +38,20 @@ public class Menu extends AppCompatActivity {
 
         //Creates an array to select the difficulty with the spinner
         spinner1 = (Spinner)findViewById(R.id.spinner);
-        String [] options = {"Easy", "Medium", "Hard"};
+        String [] options = {getString(R.string.easy), getString(R.string.medium), getString(R.string.hard)};
 
         txtHighScore = findViewById(R.id.TextHighScore);
 
         ArrayAdapter <String> adapter = new ArrayAdapter<>(this,R.layout.spinner_items, options);
         adapter.setDropDownViewResource(R.layout.my_dropdown_item);
         spinner1.setAdapter(adapter);
+
+        btnPlay = findViewById(R.id.BtnPlay);
+        btnPlay.setText(getText(R.string.play));
+        txtPlay = findViewById(R.id.TextPlay);
+        txtPlay.setText(getText(R.string.select_difficulty));
+        btnExit = findViewById(R.id.BtnExit);
+        btnExit.setText(getString(R.string.exit));
 
         /*
         This shows the highest Score for the difficulty selected in the Menu
@@ -49,18 +61,18 @@ public class Menu extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = spinner1.getSelectedItem().toString();
 
-                if(selection.equals("Easy")){
+                if(selection.equals(getString(R.string.easy))){
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-                    int h_score = sharedPreferences.getInt("Easy", 0);
-                    txtHighScore.setText("High Score: "+h_score);
-                } else if (selection.equals("Medium")) {
+                    int h_score = sharedPreferences.getInt(getString(R.string.easy), 0);
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
+                } else if (selection.equals(getString(R.string.medium))) {
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-                    int h_score = sharedPreferences.getInt("Medium", 0);
-                    txtHighScore.setText("High Score: "+h_score);
-                } else if (selection.equals("Hard")) {
+                    int h_score = sharedPreferences.getInt(getString(R.string.medium), 0);
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
+                } else if (selection.equals(getString(R.string.hard))) {
                     SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-                    int h_score = sharedPreferences.getInt("Hard", 0);
-                    txtHighScore.setText("High Score: "+h_score);
+                    int h_score = sharedPreferences.getInt(getString(R.string.hard), 0);
+                    txtHighScore.setText(getString(R.string.high_score)+h_score);
                 }
             }
 
@@ -90,11 +102,11 @@ public class Menu extends AppCompatActivity {
 
     public void Play(View view){
         String selection = spinner1.getSelectedItem().toString();
-        if(selection.equals("Easy")){
+        if(selection.equals(getString(R.string.easy))){
             Easy();
-        } else if (selection.equals("Medium")) {
+        } else if (selection.equals(getString(R.string.medium))) {
             Medium();
-        } else if (selection.equals("Hard")) {
+        } else if (selection.equals(getString(R.string.hard))) {
             Hard();
         }
     }

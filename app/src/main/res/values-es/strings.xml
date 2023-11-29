@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AZ-A</string>
+    <string name="easy">Fácil</string>
+    <string name="medium">Medio</string>
+    <string name="hard">Difícil</string>
+    <string name="select_difficulty">Selecciona Dificultad para Jugar</string>
+    <string name="play">Jugar</string>
+    <string name="exit">Salir</string>
+    <string name="high_score">"Mayor Puntaje: "</string>
+    <string name="current_score">"Puntaje Actual: "</string>
+    <string name="incorrect">"¡Incorreto!\n"</string>
+    <string name="out_of_time">"¡Fuera de Tiempo!\n"</string>
+    <string name="time_left">"Tiempo Restante: "</string>
+    <string name="solve_for">Resuelve Para:</string>
+    <string name="find_a">Valor a</string>
+    <string name="find_z">Valor z</string>
+    <string name="submit">Enviar</string>
+    <string name="your_score_was">"Tu Puntaje Fue:  "</string>
+    <string name="answer_was">"La Respuesta Era:"\n</string>
+    <string name="you_lost">Perdiste</string>
+    <string name="play_again">Jugar de Nuevo</string>
+    <string name="quit">Regresar al Menú</string>
+</resources>
