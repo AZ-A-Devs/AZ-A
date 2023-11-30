@@ -9,7 +9,7 @@
     <string name="exit">Salir</string>
     <string name="high_score">"Mayor Puntaje: "</string>
     <string name="current_score">"Puntaje Actual: "</string>
-    <string name="incorrect">"¡Incorreto!\n"</string>
+    <string name="incorrect">"¡Incorrecto!\n"</string>
     <string name="out_of_time">"¡Fuera de Tiempo!\n"</string>
     <string name="time_left">"Tiempo Restante: "</string>
     <string name="solve_for">Resuelve Para:</string>

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -65,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREFS = "shared preferences";
     private int h_score;
 
+    //sound
+    MediaPlayer correctSound;
+    MediaPlayer incorrectSound;
+
 /*
 This method is executed when the activity is created
  */
@@ -72,6 +78,9 @@ This method is executed when the activity is created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        correctSound = MediaPlayer.create(this, R.raw.correct);
+        incorrectSound = MediaPlayer.create(this, R.raw.incorrect);
 
         txtSolveFor = findViewById(R.id.TextResultHint);
         txtSolveFor.setText(getString(R.string.solve_for));
@@ -108,6 +117,16 @@ This method is executed when the activity is created
         textHighScore = findViewById(R.id.TextHighScore);
 
         Generate();//updating for the first time
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        if (correctSound != null) {
+            correctSound.release();
+        }
+        if (incorrectSound != null) {
+            incorrectSound.release();
+        }
     }
 
     /*
@@ -148,6 +167,7 @@ This method is executed when the activity is created
         double aGuessed = 0;
         double zGuessed = 0;
 
+
         //this is just in case, there shouldnt be any exceptions of that sort tbh
         try{
             aGuessed = Double.parseDouble(edtA.getText().toString());
@@ -164,14 +184,21 @@ This method is executed when the activity is created
         //this validates that the answer is right
         if( result.getValue() == a.getCoeficient() * aGuessed + z.getCoeficient() * zGuessed + a2.getCoeficient() * aGuessed){
             //if the answer is right
+
+            // play correct sound
+            correctSound.start();
+
             counter++;
             txtConclusion.setText(getString(R.string.current_score) + counter);
+
             //update high score
             if(counter > h_score){
                 saveData();
             }
             Generate();
         }else{
+// if the answer is incorrect
+            incorrectSound.start();
             lost(getString(R.string.incorrect));
         }
     }
