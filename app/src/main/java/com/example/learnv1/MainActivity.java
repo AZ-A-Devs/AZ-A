@@ -197,8 +197,7 @@ This method is executed when the activity is created
             }
             Generate();
         }else{
-// if the answer is incorrect
-            incorrectSound.start();
+
             lost(getString(R.string.incorrect));
         }
     }
@@ -275,6 +274,7 @@ This method is executed when the activity is created
         intent.putExtra("lower", lower);
         intent.putExtra("upper", upper);
         intent.putExtra("answer", result.getRep()+"\na = "+a.getValue()+"   z = "+z.getValue());
+        incorrectSound.start(); // if the answer is incorrect
         startActivity(intent);
         finish();//finishes current activity
     }
